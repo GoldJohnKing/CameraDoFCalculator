@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>景深计算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>景深计算器</h1>
+        <form id="dofForm">
+            <div class="section">
+                <h2 id="sensorTitle">传感器参数</h2>
+                <div class="form-group" id="sizeGroup">
+                    <label for="size">传感器尺寸 (mm):</label>
+                    <input type="number" id="size" name="size" step="0.1" required>
+                </div>
+                <div class="form-group" id="pixelsGroup">
+                    <label for="pixels">像素数 (px):</label>
+                    <input type="number" id="pixels" name="pixels" required>
+                </div>
+                <div class="form-group" id="sigmaGroup" style="display: none;">
+                    <label for="sigmaInput">容许弥散圆直径 (mm):</label>
+                    <input type="number" id="sigmaInput" name="sigmaInput" step="0.00000001" required disabled>
+                </div>
+                <button type="button" id="toggleMode">切换计算模式：容许弥散圆</button>
+            </div>
+            <div class="section">
+                <h2>镜头参数</h2>
+                <div class="form-group">
+                    <label for="focus">镜头焦距 (mm):</label>
+                    <input type="number" id="focus" name="focus" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="F">光圈值 F:</label>
+                    <input type="number" id="F" name="F" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="L">物距 (m):</label>
+                    <input type="number" id="L" name="L" step="0.1" required>
+                </div>
+            </div>
+            <button type="submit">计算</button>
+            <div class="section">
+                <h2>计算结果</h2>
+                <div id="results" class="results">
+                    <p id="sigmaResult">容许弥散圆直径: <span id="sigma">-</span> mm</p>
+                    <p>前景深: <span id="dof_front">-</span> m</p>
+                    <p>后景深: <span id="dof_rear">-</span> m</p>
+                    <p>总景深: <span id="dof">-</span> m</p>
+                    <p>景深范围: <span id="dof_range">-</span> m</p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
